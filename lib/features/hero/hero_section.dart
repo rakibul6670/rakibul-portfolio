@@ -9,6 +9,9 @@ import '../../core/utils/responsive.dart';
 import '../../core/utils/url_helper.dart';
 import '../../core/widgets/glass_container.dart';
 import '../../core/widgets/gradient_text.dart';
+import '../../core/widgets/max_width_container.dart';
+
+export '../../core/widgets/max_width_container.dart';
 
 class HeroSection extends StatefulWidget {
   final VoidCallback onViewWorkTap;
@@ -368,27 +371,6 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class MaxWidthContainer extends StatelessWidget {
-  final double maxWidth;
-  final Widget child;
-
-  const MaxWidthContainer({
-    super.key,
-    required this.maxWidth,
-    required this.child,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: maxWidth),
-        child: child,
       ),
     );
   }

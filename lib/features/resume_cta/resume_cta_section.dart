@@ -7,7 +7,7 @@ import '../../core/utils/responsive.dart';
 import '../../core/utils/url_helper.dart';
 import '../../core/widgets/glass_container.dart';
 import '../../core/widgets/gradient_text.dart';
-import '../hero/hero_section.dart';
+import '../../core/widgets/max_width_container.dart';
 
 class ResumeCtaSection extends StatelessWidget {
   final VoidCallback onContactTap;

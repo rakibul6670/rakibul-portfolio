@@ -5,8 +5,8 @@ import '../../core/constants/app_text_styles.dart';
 import '../../core/utils/responsive.dart';
 import '../../core/widgets/glass_container.dart';
 import '../../core/widgets/hover_card.dart';
+import '../../core/widgets/max_width_container.dart';
 import '../../core/widgets/section_header.dart';
-import '../hero/hero_section.dart';
 
 class ArchitectureSection extends StatefulWidget {
   const ArchitectureSection({super.key});

@@ -6,8 +6,8 @@ import '../../core/constants/app_text_styles.dart';
 import '../../core/utils/responsive.dart';
 import '../../core/utils/url_helper.dart';
 import '../../core/widgets/glass_container.dart';
+import '../../core/widgets/max_width_container.dart';
 import '../../core/widgets/section_header.dart';
-import '../hero/hero_section.dart';
 
 class ContactSection extends StatefulWidget {
   const ContactSection({super.key});

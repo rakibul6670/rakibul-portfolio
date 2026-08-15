@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/utils/responsive.dart';
+import '../../core/widgets/max_width_container.dart';
 import '../../core/widgets/section_header.dart';
 import '../../data/projects_data.dart';
 import '../../models/project_model.dart';
-import '../hero/hero_section.dart';
 import 'project_card.dart';
 import 'project_detail_dialog.dart';
 

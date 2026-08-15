@@ -5,9 +5,9 @@ import '../../core/constants/app_text_styles.dart';
 import '../../core/utils/responsive.dart';
 import '../../core/widgets/glass_container.dart';
 import '../../core/widgets/hover_card.dart';
+import '../../core/widgets/max_width_container.dart';
 import '../../core/widgets/section_header.dart';
 import '../../data/education_data.dart';
-import '../hero/hero_section.dart';
 
 class EducationSection extends StatelessWidget {
   const EducationSection({super.key});

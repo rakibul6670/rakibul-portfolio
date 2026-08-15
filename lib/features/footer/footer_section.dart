@@ -4,7 +4,7 @@ import '../../core/constants/app_constants.dart';
 import '../../core/constants/app_text_styles.dart';
 import '../../core/utils/responsive.dart';
 import '../../core/utils/url_helper.dart';
-import '../hero/hero_section.dart';
+import '../../core/widgets/max_width_container.dart';
 
 class FooterSection extends StatelessWidget {
   final Function(int) onNavItemTap;
@@ -49,19 +49,21 @@ class FooterSection extends StatelessWidget {
               mainAxisAlignment: isMobile ? MainAxisAlignment.center : MainAxisAlignment.spaceBetween,
               children: [
                 // Logo & Title
-                Column(
-                  crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      AppConstants.name,
-                      style: AppTextStyles.cardTitle.copyWith(fontSize: 20, fontWeight: FontWeight.w800),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      AppConstants.title,
-                      style: AppTextStyles.bodyMedium.copyWith(fontSize: 13, color: AppColors.flutterCyan),
-                    ),
-                  ],
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppConstants.name,
+                        style: AppTextStyles.cardTitle.copyWith(fontSize: 20, fontWeight: FontWeight.w800),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        AppConstants.title,
+                        style: AppTextStyles.bodyMedium.copyWith(fontSize: 13, color: AppColors.flutterCyan),
+                      ),
+                    ],
+                  ),
                 ),
 
                 if (!isMobile)
