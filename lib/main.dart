@@ -15,7 +15,7 @@ class RakibulPortfolioApp extends StatelessWidget {
     return MaterialApp(
       title: 'Rakibul Hossain — Flutter Developer | Mobile Application Developer | Software Engineer',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.darkTheme,
+      theme: AppTheme.lightTheme,
       home: const MainLayout(),
     );
   }

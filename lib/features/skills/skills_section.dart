@@ -52,33 +52,19 @@ class _SkillsSectionState extends State<SkillsSection> {
             ),
             const SizedBox(height: 40),
 
-            // Category Tabs
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+            // Responsive Category Filter Pills (Centered Wrap)
+            Center(
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 10,
+                runSpacing: 10,
                 children: _categories.map((category) {
                   final isSelected = _selectedCategory == category;
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: FilterChip(
-                      selected: isSelected,
-                      label: Text(category),
-                      labelStyle: TextStyle(
-                        fontSize: 13,
-                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                        color: isSelected ? Colors.white : AppColors.textSecondary,
-                      ),
-                      backgroundColor: AppColors.cardDark,
-                      selectedColor: AppColors.flutterPrimary,
-                      side: BorderSide(
-                        color: isSelected ? AppColors.flutterCyan : AppColors.borderDark,
-                      ),
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                      onSelected: (_) {
-                        setState(() => _selectedCategory = category);
-                      },
-                    ),
+                  return _SkillCategoryPill(
+                    label: category,
+                    isSelected: isSelected,
+                    onTap: () => setState(() => _selectedCategory = category),
                   );
                 }).toList(),
               ),
@@ -150,5 +136,86 @@ class _SkillsSectionState extends State<SkillsSection> {
         ),
       ),
     ).animate().fadeIn(duration: 400.ms, delay: (50 * (index % 8)).ms);
+  }
+}
+
+class _SkillCategoryPill extends StatefulWidget {
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const _SkillCategoryPill({
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  State<_SkillCategoryPill> createState() => _SkillCategoryPillState();
+}
+
+class _SkillCategoryPillState extends State<_SkillCategoryPill> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final isSelected = widget.isSelected;
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeOutCubic,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          decoration: BoxDecoration(
+            color: isSelected
+                ? AppColors.flutterPrimary
+                : (_isHovered ? AppColors.surfaceLight.withValues(alpha: 0.8) : AppColors.surfaceLight),
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(
+              color: isSelected
+                  ? AppColors.flutterPrimary
+                  : (_isHovered ? AppColors.flutterCyan : AppColors.borderLight),
+              width: 1.2,
+            ),
+            boxShadow: isSelected
+                ? [
+                    BoxShadow(
+                      color: AppColors.flutterPrimary.withValues(alpha: 0.25),
+                      blurRadius: 10,
+                      offset: const Offset(0, 3),
+                    ),
+                  ]
+                : (_isHovered
+                    ? [
+                        BoxShadow(
+                          color: AppColors.flutterCyan.withValues(alpha: 0.12),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ]
+                    : []),
+          ),
+          child: Text(
+            widget.label,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+              color: isSelected
+                  ? Colors.white
+                  : (_isHovered ? AppColors.flutterPrimary : AppColors.textSecondary),
+              letterSpacing: 0.2,
+            ),
+            maxLines: 1,
+            softWrap: false,
+            overflow: TextOverflow.visible,
+          ),
+        ),
+      ),
+    );
   }
 }

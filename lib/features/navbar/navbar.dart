@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_constants.dart';
-import '../../core/constants/app_text_styles.dart';
 import '../../core/utils/url_helper.dart';
 
 class Navbar extends StatelessWidget {
@@ -35,79 +34,18 @@ class Navbar extends StatelessWidget {
 
     return ClipRRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+        filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
         child: Container(
           height: 72,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           decoration: BoxDecoration(
-            color: AppColors.bgDark.withValues(alpha: 0.85),
+            color: AppColors.bgLight.withValues(alpha: 0.88),
             border: const Border(
-              bottom: BorderSide(color: AppColors.borderDark, width: 1),
+              bottom: BorderSide(color: AppColors.borderLight, width: 1),
             ),
           ),
           child: Row(
             children: [
-              // Logo / Name Badge
-              InkWell(
-                onTap: () => onNavItemTap(0),
-                borderRadius: BorderRadius.circular(8),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          gradient: AppColors.flutterGradient,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: const Icon(
-                          Icons.code,
-                          size: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            AppConstants.name,
-                            style: AppTextStyles.cardTitle.copyWith(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                width: 6,
-                                height: 6,
-                                decoration: const BoxDecoration(
-                                  color: AppColors.onlineGreen,
-                                  shape: BoxShape.circle,
-                                ),
-                              ),
-                              const SizedBox(width: 6),
-                              Text(
-                                'Available for Opportunities',
-                                style: AppTextStyles.badgeText.copyWith(
-                                  fontSize: 10,
-                                  color: AppColors.onlineGreen,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const Spacer(),
-
               // Desktop Nav Links or Mobile/Tablet Drawer Toggle
               if (showDesktopNav) ...[
                 Row(
@@ -121,25 +59,26 @@ class Navbar extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 12),
+                const Spacer(),
                 ElevatedButton.icon(
                   onPressed: () => UrlHelper.launchURL(AppConstants.resumeDownloadUrl),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.flutterPrimary,
                     foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                     elevation: 0,
                   ),
-                  icon: const Icon(Icons.download, size: 14),
+                  icon: const Icon(Icons.download, size: 15),
                   label: const Text(
                     'Resume',
                     style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
                   ),
                 ),
               ] else ...[
+                const Spacer(),
                 // Mobile/Tablet Menu Hamburger Button
                 IconButton(
                   onPressed: onOpenDrawer,
@@ -185,7 +124,7 @@ class _NavButtonState extends State<_NavButton> {
       child: GestureDetector(
         onTap: widget.onTap,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -193,17 +132,17 @@ class _NavButtonState extends State<_NavButton> {
                 widget.title,
                 style: TextStyle(
                   fontSize: 13,
-                  fontWeight: widget.isActive || _isHovered ? FontWeight.w600 : FontWeight.w400,
+                  fontWeight: widget.isActive || _isHovered ? FontWeight.w600 : FontWeight.w500,
                   color: widget.isActive
                       ? AppColors.flutterCyan
-                      : (_isHovered ? AppColors.textPrimary : AppColors.textSecondary),
+                      : (_isHovered ? AppColors.flutterPrimary : AppColors.textSecondary),
                 ),
               ),
               const SizedBox(height: 4),
               AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
                 height: 2,
-                width: widget.isActive ? 16 : (_isHovered ? 8 : 0),
+                width: widget.isActive ? 18 : (_isHovered ? 10 : 0),
                 decoration: BoxDecoration(
                   color: AppColors.flutterCyan,
                   borderRadius: BorderRadius.circular(1),

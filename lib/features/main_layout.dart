@@ -79,13 +79,18 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: AppColors.bgDark,
+      backgroundColor: AppColors.bgLight,
       endDrawer: Drawer(
-        backgroundColor: AppColors.cardDark,
+        backgroundColor: AppColors.cardLight,
         child: Column(
           children: [
             DrawerHeader(
-              decoration: const BoxDecoration(color: AppColors.surfaceDark),
+              decoration: const BoxDecoration(
+                color: AppColors.surfaceLight,
+                border: Border(
+                  bottom: BorderSide(color: AppColors.borderLight),
+                ),
+              ),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +106,7 @@ class _MainLayoutState extends State<MainLayout> {
                     const SizedBox(height: 4),
                     const Text(
                       'Flutter Developer',
-                      style: TextStyle(fontSize: 13, color: AppColors.flutterCyan),
+                      style: TextStyle(fontSize: 13, color: AppColors.flutterCyan, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -133,6 +138,7 @@ class _MainLayoutState extends State<MainLayout> {
                 onPressed: () => UrlHelper.launchURL(AppConstants.resumeDownloadUrl),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.flutterPrimary,
+                  foregroundColor: Colors.white,
                   minimumSize: const Size(double.infinity, 48),
                 ),
                 icon: const Icon(Icons.download, size: 16),

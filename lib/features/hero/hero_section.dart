@@ -144,7 +144,7 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(Icons.circle, size: 10, color: AppColors.flutterCyan),
+              const Icon(Icons.circle, size: 9, color: AppColors.onlineGreen),
               const SizedBox(width: 8),
               Text(
                 "Hi, I'm ${AppConstants.name}",
@@ -191,8 +191,8 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14),
                 ),
-                elevation: 8,
-                shadowColor: AppColors.flutterCyan.withValues(alpha: 0.4),
+                elevation: 4,
+                shadowColor: AppColors.flutterPrimary.withValues(alpha: 0.3),
               ),
               icon: const Icon(Icons.work_outline, size: 18),
               label: const Text(
@@ -207,12 +207,12 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
               style: OutlinedButton.styleFrom(
                 foregroundColor: AppColors.textPrimary,
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
-                side: const BorderSide(color: AppColors.borderDark, width: 1.5),
+                side: const BorderSide(color: AppColors.borderLight, width: 1.5),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14),
                 ),
               ),
-              icon: const Icon(Icons.download, size: 18, color: AppColors.flutterCyan),
+              icon: const Icon(Icons.download, size: 18, color: AppColors.flutterPrimary),
               label: const Text(
                 'Download Resume',
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
@@ -229,7 +229,7 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
               icon: const Icon(Icons.send, size: 16, color: AppColors.accentPurple),
               label: const Text(
                 "Let's Connect",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
             ),
           ],
@@ -281,7 +281,7 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
                 padding: const EdgeInsets.all(4),
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.bgDark,
+                  color: AppColors.bgLight,
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(152),
@@ -289,7 +289,7 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
                     AppAssets.profilePic,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) => Container(
-                      color: AppColors.surfaceDark,
+                      color: AppColors.surfaceLight,
                       child: const Center(
                         child: Icon(Icons.person, size: 80, color: AppColors.flutterCyan),
                       ),

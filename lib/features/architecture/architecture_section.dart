@@ -152,7 +152,8 @@ class _ArchitectureSectionState extends State<ArchitectureSection> {
                             layer['title'],
                             style: AppTextStyles.cardTitle.copyWith(
                               fontSize: 15,
-                              color: isSelected ? Colors.white : AppColors.textPrimary,
+                              fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
+                              color: isSelected ? AppColors.flutterPrimary : AppColors.textPrimary,
                             ),
                           ),
                           Text(
